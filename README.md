@@ -1,2 +1,2 @@
-# timerBeta
-editable beta version
+# timer
+practice stopwatch

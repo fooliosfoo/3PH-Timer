@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<script src="timer.js"></script>
+<link rel="icon" 
+  type="image/png" 
+  href="icon.png">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<meta name="viewport" content="initial-scale=1, maximum-scale=1"> 
+<link rel="stylesheet" type="text/css" href="tstyle.css">
+<style>
+body {
+  width: 300px;
+  height: 500px;
+  margin: 0px auto;
+  padding: 10px;
+  font: 10pt/1.5em Helvetica,"Helvetica neue", Arial, sans-serif;
+  border-style:solid;
+  border-width:2px;
+}
+</style>
+<script>
+if ('serviceWorker' in navigator) {
+  console.log('CLIENT: service worker registration in progress.');
+  navigator.serviceWorker.register('https://github.com/fooliosfoo/timer/sw.js').then(function() {
+    console.log('CLIENT: service worker registration complete.');
+  }, function() {
+    console.log('CLIENT: service worker registration failure.');
+  });
+} else {
+  console.log('CLIENT: service worker is not supported.');
+}
+</script>
+</head>
+<body>
+<h1><p>Watt Load Check</p></h1>
+<h2><pre>1PH 1S/2S Kh<input type="text" autofocus size="3" maxlength="3" id="khVal" name="kh" class="khtxtbx" value="1.0" onchange = "khFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();">
+</pre></h2>
+<hr />
+<button onClick="PlseTimer = setInterval(myCounter, 1000)" id="StrtBttn" style="height:66px; width:100%; background-color: white; color: green; font-size: 20px;">Start Timer</button>
+<button onClick="RstTmeCntr()" id="StpBttn" style="height:160px; width:100%; background-color: white; color: green; font-size: 20px;">Stop Timer</button>
+<p><span id="TimeCntr">0</span> Seconds</p>
+<form id="frm1" action="">
+# of Widgets: <input type="text" autofocus size="3" maxlength="3" id="widgets" name="w" value="" onchange = "wattsFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();">
+<br>
+# of Seconds: <input type="text" size="2" maxlength="2" id="seconds" name="s" value="0" onchange = "wattsFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();" readonly>
+</form> 
+<p id="testResult"></p>
+<p id="amperage1s"></p>
+<p id="amperage"></p>
+<p id="cautionTag"></p>
+<script>
+var post = document.getElementById('StrtBttn');
+var StpBttnPst = document.getElementById('StpBttn');
+StpBttnPst.style.display = 'none';
+</script>
+</body>
+</html>
