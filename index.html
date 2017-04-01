@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<script src="timer.js"></script>
+<link rel="icon" 
+  type="image/png" 
+  href="icon.png">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1"> 
+<link rel="stylesheet" type="text/css" href="tstyle.css">
+<style>
+body {
+  background:#ccd9ff;
+  width: 300px;
+  height: 500px;
+  margin: 0px auto;
+  padding: 2px;
+  font: 10pt/1.5em Helvetica,"Helvetica neue", Arial, sans-serif;
+}
+</style>
+<script>
+if ('serviceWorker' in navigator) {
+  console.log('CLIENT: service worker registration in progress.');
+  navigator.serviceWorker.register('https://github.com/fooliosfoo/timer/sw.js').then(function() {
+    console.log('CLIENT: service worker registration complete.');
+  }, function() {
+    console.log('CLIENT: service worker registration failure.');
+  });
+} else {
+  console.log('CLIENT: service worker is not supported.');
+}
+</script>
+</head>
+<body>
+<div style="border-radius:12px; border:1px solid silver; background:#e6ecff; padding:6px;">
+<p>3PH SC/TR:1 - Kh <input type="text" autofocus size="4" maxlength="4" id="khVal" name="kh" class="khtxtbx" value="1.0" onchange = "khFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();"> <a href="https://fooliosfoo.github.io/timer/">[ -- 1PH Link -- ]</a>
+<br />
+    PT Ratio <input type="text" size="2" maxlength="4" id="ptVal" name="ptr" class="ptrtxtbx" value="1" onchange = "ptrFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();"> :1  
+    *
+    CT Ratio <input type="text" size="2" maxlength="4" id="ctVal" name="ctr" class="ctrtxtbx" value="1" onchange = "ctrFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();"> :1
+</p>
+<button onClick="PlseTimer = setInterval(myCounter, 1000)" id="StrtBttn" style="height:66px; width:100%; background-color: white; color: green; font-size: 20px;">Start Timer</button>
+<button onClick="RstTmeCntr()" id="StpBttn" style="height:160px; width:100%; background-color: white; color: red; font-size: 20px;">Stop Timer</button>
+<p><span id="TimeCntr">0</span> Seconds</p>
+<form id="frm1" action="">
+Enter # of Widgets: <input type="text" size="3" maxlength="3" id="widgets" name="w" value="" onchange = "wattsFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();">
+<br>
+# of Seconds Timed: <input type="text" size="2" maxlength="2" id="seconds" name="s" value="0" onchange = "wattsFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();" readonly>
+</form> 
+<p id="testResult"></p>
+<p id="amperage1s"></p>
+<p id="amperage"></p>
+<p id="cautionTag"></p>
+<script>
+var post = document.getElementById('StrtBttn');
+var StpBttnPst = document.getElementById('StpBttn');
+StpBttnPst.style.display = 'none';
+</script>
+<FORM ACTION="/electricity/" METHOD=POST name=calculator id=calculator>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=4>
+<TR>
+<TD VALIGN=top>
+<B>Hours Per day</B>
+<br><SELECT NAME=hours onchange="calculate()">
+<OPTION VALUE="0.0167">1 minute/day
+<OPTION VALUE="0.0833">5 minutes/day
+<OPTION VALUE="0.25">15 minutes/day
+<OPTION VALUE="0.50">30 minutes/day
+<OPTION VALUE=1>1 hr./day
+<OPTION VALUE=2>2 hrs./day
+<OPTION VALUE=3>3 hrs./day
+<OPTION VALUE=4>4 hrs./day
+<OPTION VALUE=5>5 hrs./day
+<OPTION VALUE=6>6 hrs./day
+<OPTION VALUE=7>7 hrs./day
+<OPTION VALUE=8>8 hrs./day
+<OPTION VALUE=9>9 hrs./day
+<OPTION VALUE=10>10 hrs./day
+<OPTION VALUE=11>11 hrs./day
+<OPTION VALUE=12>12 hrs./day
+<OPTION VALUE=13>13 hrs./day
+<OPTION VALUE=14>14 hrs./day
+<OPTION VALUE=15>15 hrs./day
+<OPTION VALUE=16>16 hrs./day
+<OPTION VALUE=17>17 hrs./day
+<OPTION VALUE=18>18 hrs./day
+<OPTION VALUE=19>19 hrs./day
+<OPTION VALUE=20>20 hrs./day
+<OPTION VALUE=21>21 hrs./day
+<OPTION VALUE=22>22 hrs./day
+<OPTION VALUE=23>23 hrs./day
+<OPTION VALUE=24 SELECTED>24 hrs./day
+</SELECT>
+</TD>
+<TD>
+<B>Days Per month</B>
+<br><SELECT NAME=days onchange="calculate()">
+<OPTION VALUE=1>1
+<OPTION VALUE=2>2
+<OPTION VALUE=3>3
+<OPTION VALUE=4>4
+<OPTION VALUE=5>5
+<OPTION VALUE=6>6
+<OPTION VALUE=7>7
+<OPTION VALUE=8>8
+<OPTION VALUE=9>9
+<OPTION VALUE=10>10
+<OPTION VALUE=11>11
+<OPTION VALUE=12>12
+<OPTION VALUE=13>13
+<OPTION VALUE=14>14
+<OPTION VALUE=15>15
+<OPTION VALUE=16>16
+<OPTION VALUE=17>17
+<OPTION VALUE=18>18
+<OPTION VALUE=19>19
+<OPTION VALUE=20>20
+<OPTION VALUE=21>21
+<OPTION VALUE=22>22
+<OPTION VALUE=23>23
+<OPTION VALUE=24>24
+<OPTION VALUE=25>25
+<OPTION VALUE=26>26
+<OPTION VALUE=27>27
+<OPTION VALUE=28>28
+<OPTION VALUE=29>29
+<OPTION VALUE=30>30
+<OPTION VALUE=31 SELECTED>31
+    </SELECT>
+</TD>
+</TR>
+</TABLE>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=4>
+<TR>
+<TD VALIGN=top>
+	<TABLE BORDER=0 style="font:11px Arial; border:1px solid navy">
+	<TR>
+		<TD ALIGN=right>Kilowatt Hours Used / Month:</TD>
+		<TD><INPUT ALIGN=right TYPE=text NAME=kwh VALUE="" SIZE=8 readonly></TD>
+	</TR>
+	<TR>
+		<TD style="border-top:1px solid gray; border-bottom:1px solid gray" align=right><B>Cost per month: $</B></TD>
+		<TD style="border-top:1px solid gray; border-bottom:1px solid gray"><INPUT TYPE=text NAME=costpermonth VALUE="" SIZE=8 readonly></TD>
+	</TR>
+	<TR>
+		<TD ALIGN=right>Cost Per Year: $</TD>
+		<TD><INPUT TYPE=text NAME=costperyear VALUE="" SIZE=8 readonly></TD>
+	</TR>
+	</TABLE>
+</TD>
+</TR>
+</TABLE>
+</div>
+</body>
+</html>
