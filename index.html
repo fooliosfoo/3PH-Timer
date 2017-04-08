@@ -35,9 +35,9 @@ if ('serviceWorker' in navigator) {
 <div style="border-radius:12px; border:1px solid silver; background:#e6ecff; padding:6px;">
 <p>3PH SC/TR:1 - Kh <input type="text" autofocus size="4" maxlength="4" id="khVal" name="kh" class="khtxtbx" value="1.0" onchange = "khFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();"> <a href="https://fooliosfoo.github.io/timer/">[ -- 1PH Link -- ]</a>
 <br />
-    PT Ratio <input type="text" size="2" maxlength="4" id="ptVal" name="ptr" class="ptrtxtbx" value="1" onchange = "ptrFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();"> :1  
+    PT Ratio <input type="text" size="4" maxlength="4" id="ptVal" name="ptr" class="ptrtxtbx" value="1" onchange = "ptrFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();"> :1  
     *
-    CT Ratio <input type="text" size="2" maxlength="4" id="ctVal" name="ctr" class="ctrtxtbx" value="1" onchange = "ctrFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();"> :1
+    CT Ratio <input type="text" size="4" maxlength="4" id="ctVal" name="ctr" class="ctrtxtbx" value="1" onchange = "ctrFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();"> :1
 </p>
 <button onClick="PlseTimer = setInterval(myCounter, 1000)" id="StrtBttn" style="height:66px; width:100%; background-color: white; color: green; font-size: 20px;">Start Timer</button>
 <button onClick="RstTmeCntr()" id="StpBttn" style="height:160px; width:100%; background-color: white; color: red; font-size: 20px;">Stop Timer</button>
