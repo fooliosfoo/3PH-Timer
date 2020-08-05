@@ -38,7 +38,7 @@ if ('serviceWorker' in navigator) {
     *
     CT Ratio <input type="text" size="4" maxlength="4" id="ctVal" name="ctr" class="ctrtxtbx" value="1" onchange = "ctrFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();"> :1
 </p>
-<button onClick="PlseTimer = setInterval(myCounter, 1000)" id="StrtBttn" style="height:66px; width:100%; background-color: white; color: green; font-size: 20px;">Start Timer</button>
+<button onClick="PlseTimer = setInterval(myCounter, 1000)" id="toggle" style="height:66px; width:100%; background-color: white; color: green; font-size: 20px;">Start Timer</button>
 <button onClick="RstTmeCntr()" id="StpBttn" style="height:160px; width:100%; background-color: white; color: red; font-size: 20px;">Stop Timer</button>
 <p><span id="TimeCntr">0</span> Seconds</p>
 <form id="frm1" action="">
@@ -51,8 +51,8 @@ Enter # of Widgets: <input type="text" size="3" maxlength="3" id="widgets" name=
 <p id="amperage"></p>
 <p id="cautionTag"></p>
 <script>
-var post = document.getElementById('StrtBttn');
-var StpBttnPst = document.getElementById('StpBttn');
+var post = document.getElementById('toggle');
+var StpBttnPst = document.getElementById('toggle');
 StpBttnPst.style.display = 'none';
  var noSleep = new NoSleep();
       var wakeLockEnabled = false;
