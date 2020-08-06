@@ -56,6 +56,27 @@ Enter # of Widgets: <input type="text" size="3" maxlength="3" id="widgets" name=
 var post = document.getElementById('StrtBttn');
 var StpBttnPst = document.getElementById('StpBttn');
 StpBttnPst.style.display = 'none';
+	
+	
+	var noSleep = new NoSleep();
+
+      var wakeLockEnabled = false;
+      var toggleEl = document.querySelector("#StrtBttn");
+      toggleEl.addEventListener('click', function() {
+        if (!wakeLockEnabled) {
+          noSleep.enable(); // keep the screen on!
+          wakeLockEnabled = true;
+          //toggleEl.value = "Wake Lock is enabled";
+          //document.body.style.backgroundColor = "green";
+        } else {
+          noSleep.disable(); // let the screen turn off.
+          wakeLockEnabled = false;
+          //toggleEl.value = "Wake Lock is disabled";
+          //document.body.style.backgroundColor = "";
+        }
+      }, false);
+	
+	
 </script>
 <FORM ACTION="/electricity/" METHOD=POST name=calculator id=calculator>
 <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=4>
