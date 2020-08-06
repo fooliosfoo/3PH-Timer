@@ -32,6 +32,10 @@ if ('serviceWorker' in navigator) {
 </script>
 </head>
 <body>
+<audio id="audioContainer">
+  <source src="beep.mp3" type="audio/mpeg">
+</audio>
+	
 <div style="border-radius:12px; border:1px solid silver; background:#e6ecff; padding:6px;">
 <p>3PH SC/TR:1 - Kh <input type="text" autofocus size="4" maxlength="4" id="khVal" name="kh" class="khtxtbx" value="1.0" onchange = "khFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();"> <a href="https://fooliosfoo.github.io/timer/">[ -- 1PH Link -- ]</a>
 <br />
@@ -52,6 +56,10 @@ Enter # of Widgets: <input type="text" size="3" maxlength="3" id="widgets" name=
 <p id="amperage"></p>
 <p id="cautionTag"></p>
 <script>
+	const audioContainer = document.getElementById("audioContainer");
+	function playMp3() { 
+  	audioContainer.play(); 
+	} 
 var post = document.getElementById('StrtBttn');
 var StpBttnPst = document.getElementById('StpBttn');
 StpBttnPst.style.display = 'none';
@@ -62,6 +70,7 @@ StpBttnPst.style.display = 'none';
         if (!wakeLockEnabled) {
           noSleep.enable(); // keep the screen on!
           wakeLockEnabled = true;
+		playMp3()
           //toggleEl.value = "Wake Lock is enabled";
           //document.body.style.backgroundColor = "green";
         } else {
