@@ -17,8 +17,6 @@ body {
   font: 10pt/1.5em Helvetica,"Helvetica neue", Arial, sans-serif;
 }
 </style>
-<script src="timer.js"></script>
-<script src="NoSleep.min.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
   console.log('CLIENT: service worker registration in progress.');
@@ -56,10 +54,7 @@ Enter # of Widgets: <input type="text" size="3" maxlength="3" id="widgets" name=
 var post = document.getElementById('StrtBttn');
 var StpBttnPst = document.getElementById('StpBttn');
 StpBttnPst.style.display = 'none';
-	
-	
 	var noSleep = new NoSleep();
-
       var wakeLockEnabled = false;
       var toggleEl = document.querySelector("#StrtBttn");
       toggleEl.addEventListener('click', function() {
@@ -75,8 +70,6 @@ StpBttnPst.style.display = 'none';
           //document.body.style.backgroundColor = "";
         }
       }, false);
-	
-	
 </script>
 <FORM ACTION="/electricity/" METHOD=POST name=calculator id=calculator>
 <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=4>
@@ -175,4 +168,6 @@ StpBttnPst.style.display = 'none';
     <p align=center><a href="https://emsuite.000webhostapp.com/em/phpBB3/index.php"> [ ------ Electric Metering Forum ------ ]</a></p>
 </div>
 </body>
+<script src="timer.js"></script>
+<script src="NoSleep.min.js"></script>
 </html>
