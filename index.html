@@ -60,6 +60,9 @@ Enter # of Widgets: <input type="text" size="3" maxlength="3" id="widgets" name=
 	function playMp3() { 
   	audioContainer.play(); 
 	} 
+	function pauseMp3() { 
+  	audioContainer.pause(); 
+	} 
 var post = document.getElementById('StrtBttn');
 var StpBttnPst = document.getElementById('StpBttn');
 StpBttnPst.style.display = 'none';
@@ -76,6 +79,7 @@ StpBttnPst.style.display = 'none';
         } else {
           noSleep.disable(); // let the screen turn off.
           wakeLockEnabled = false;
+		pauseMp3()
           //toggleEl.value = "Wake Lock is disabled";
           //document.body.style.backgroundColor = "";
         }
