@@ -79,7 +79,9 @@ StpBttnPst.style.display = 'none';
         } else {
           noSleep.disable(); // let the screen turn off.
           wakeLockEnabled = false;
-		pauseMp3()
+		//pauseMp3()
+		var snd = new Audio("beep.mp3"); // buffers automatically when created
+		snd.play();
           //toggleEl.value = "Wake Lock is disabled";
           //document.body.style.backgroundColor = "";
         }
