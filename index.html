@@ -18,6 +18,7 @@ body {
 }
 </style>
 <script src="compressed.js"></script>
+<script src="wavesurfer.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
   console.log('CLIENT: service worker registration in progress.');
@@ -60,6 +61,7 @@ Enter # of Widgets: <input type="text" size="3" maxlength="3" id="widgets" name=
 	function playMp3() { 
   	audioContainer.play(); 
 	} 
+	wavesurfer.load('beep.mp3');
 	//function pauseMp3() { 
   	//audioContainer.pause(); 
 	//} 
@@ -74,6 +76,7 @@ StpBttnPst.style.display = 'none';
           noSleep.enable(); // keep the screen on!
           wakeLockEnabled = true;
 		playMp3()
+		wavesurfer.play();
           //toggleEl.value = "Wake Lock is enabled";
           //document.body.style.backgroundColor = "green";
         } else {
@@ -183,5 +186,10 @@ StpBttnPst.style.display = 'none';
 </TABLE>
     <p align=center><a href="https://emsuite.000webhostapp.com/em/phpBB3/index.php"> [ ------ Electric Metering Forum ------ ]</a></p>
 </div>
+	<div id="waveform"></div>
+	<script>var wavesurfer = WaveSurfer.create({
+    container: '#waveform'
+});
+	</script>
 </body>
 </html>
