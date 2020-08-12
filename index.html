@@ -55,7 +55,7 @@ Enter # of Widgets: <input type="text" size="3" maxlength="3" id="widgets" name=
 <p id="amperage1s"></p>
 <p id="amperage"></p>
 <p id="cautionTag"></p>
-<script>
+<!--<script>
 	const audioContainer = document.getElementById("audioContainer");
 	function playMp3() { 
   	audioContainer.play(); 
@@ -65,7 +65,7 @@ Enter # of Widgets: <input type="text" size="3" maxlength="3" id="widgets" name=
 	} 
 	function reloadMp3() { 
   	audioContainer.load(); 
-	} 
+	}-->
 var post = document.getElementById('StrtBttn');
 var StpBttnPst = document.getElementById('StpBttn');
 StpBttnPst.style.display = 'none';
@@ -76,6 +76,10 @@ StpBttnPst.style.display = 'none';
         if (!wakeLockEnabled) {
           noSleep.enable(); // keep the screen on!
           wakeLockEnabled = true;
+		const audioContainer = document.getElementById("audioContainer");
+	function playMp3() { 
+  	audioContainer.play(); 
+	} 
 		playMp3();
           //toggleEl.value = "Wake Lock is enabled";
           //document.body.style.backgroundColor = "green";
