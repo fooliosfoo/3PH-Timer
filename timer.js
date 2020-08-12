@@ -75,6 +75,7 @@ function playBeep(){
   secCntDwn=secCntDwn - 1;
   document.getElementById("CountDown").innerHTML=secCntDwn + " Seconds Left";
   clearInterval(myVar);
+	playMp3();
 }
 function round(value, decimals) {
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
